@@ -3,9 +3,9 @@
 #
 
 import pygame
-from Game import game
+from Game import Game
 
 if __name__ == '__main__':
     pygame.init()
-    game = game()
+    game = Game()
     game.run()

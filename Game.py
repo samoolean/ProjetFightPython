@@ -1,18 +1,32 @@
 # ()
 # 5
-#[]
+# []
+# !
 
 import pygame
+import pytmx
+import pyscroll
 from Class.player import Player 
 
-#creation de l'ecran d'acceuil
+class Game:
 
-window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-scrrec = window.get_rect()
+    def __init__(self):
+        
+        #creation de l'ecran d'acceuil
 
+        self.window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        pygame.display.set_caption('fight !')
+        #pygame.display.set_icon('ico.png')
+        scrrec = self.window.get_rect()
 
+        tmx_data = pytmx.load_pygame('map\\arena1.tmx')
+        map_data = pyscroll.data.TiledMapData(tmx_data)
+        map_layer = pyscroll.orthographic.BufferedRenderer(map_data, self.window.get_size())
 
-class game:
+        self.group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=1 )
+
+        self.player1 = Player()
+        self.player1.add(self.group)
 
     def run(self):
 
@@ -24,8 +38,8 @@ class game:
 
             while running:
 
+                self.group.draw(self.window)
                 pygame.display.flip()
-
             
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
