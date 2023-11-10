@@ -14,4 +14,4 @@ class Player(pygame.sprite.Sprite):
         self.sprite_sheet = pygame.image.load('player.png')
 
     def get_image(self, x, y):
-        image = pygame.Surface([])
+        image = pygame.Surface([32, 32])
