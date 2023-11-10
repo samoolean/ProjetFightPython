@@ -1,9 +1,16 @@
+# ()
+# 5
+#
+
 import pygame
+from Class.player import Player 
 
 #creation de l'ecran d'acceuil
 
 window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 scrrec = window.get_rect()
+
+
 
 class game:
 
