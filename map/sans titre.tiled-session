@@ -15,9 +15,13 @@
             "scaleInDock": 0.0625,
             "scaleInEditor": 0.125
         },
+        "Mossy - MossyHills.tsx": {
+            "scaleInDock": 0.1,
+            "scaleInEditor": 0.33
+        },
         "Mossy - TileSet.tsx": {
             "scaleInDock": 0.0625,
-            "scaleInEditor": 1
+            "scaleInEditor": 0.125
         },
         "platforme.tsx": {
             "scaleInDock": 0.125,
@@ -32,10 +36,11 @@
     ],
     "project": "sans titre.tiled-project",
     "recentFiles": [
-        "platforme.tsx",
         "Mossy - TileSet.tsx",
-        "Mossy - Decorations&Hazards.tsx",
-        "Mossy - BackgroundDecoration.tsx"
+        "Mossy - MossyHills.tsx",
+        "Mossy - BackgroundDecoration.tsx",
+        "platforme.tsx",
+        "Mossy - Decorations&Hazards.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
