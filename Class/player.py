@@ -35,15 +35,16 @@ class Player(pygame.sprite.Sprite):
 
     """
 
-    def __init__(self, color, x, y):
+    def __init__(self, color, x, y ,screen):
 
         self.color = color
         self.posx = x
         self.posy = y
+        self.screen = screen
 
-    def cube_player(self ,screen):
+    def cube_player(self):
     
-        player1 = pygame.draw.rect(screen, self.color, (self.posx , self.posy, 50, 70))
+        player1 = pygame.draw.rect(self.screen, self.color, (self.posx , self.posy, 50, 70))
 
         return player1
     

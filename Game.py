@@ -42,7 +42,7 @@ class Game:
         #self.player1 = Player()
         #self.player1.add(self.group)
 
-        self.player1 = Player((252, 255, 55 ) ,self.hauteurW ,self.largeurW)
+        self.player1 = Player((252, 255, 55 ) ,self.hauteurW ,self.largeurW, self.window)
 
     def run(self):
 
@@ -65,7 +65,7 @@ class Game:
                 if pygame.key.get_pressed()[pygame.K_d]:
                     self.player1.move_right(1)
 
-                self.player1.cube_player(self.window)
+                self.player1.cube_player()
             
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
