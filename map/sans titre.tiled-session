@@ -3,12 +3,29 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "arena1.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
+        "C:/Users/samoo/Desktop/code/python/Projet - Fight/a.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "C:/Users/samoo/Desktop/code/python/Projet - Fight/giphy-instagram.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "C:/Users/samoo/Desktop/code/python/Projet - Fight/test.tmx": {
+            "scale": 0.03125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 15808,
+                "y": 6080
+            }
+        },
         "Mossy - BackgroundDecoration.tsx": {
-            "scaleInDock": 0.0625,
+            "scaleInDock": 0.1,
             "scaleInEditor": 0.25
         },
         "Mossy - Decorations&Hazards.tsx": {
@@ -23,29 +40,50 @@
             "scaleInDock": 0.0625,
             "scaleInEditor": 0.125
         },
+        "arena1.tmx": {
+            "scale": 0.03125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 10720,
+                "y": 9440
+            }
+        },
+        "chat.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
         "platforme.tsx": {
             "scaleInDock": 0.125,
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "C:/Users/samoo/Desktop/code/python/Projet - Fight/asset/Mossy Tileset",
+    "last.imagePath": "C:/Users/samoo/Pictures",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 512,
     "map.tileWidth": 512,
     "openFiles": [
+        "arena1.tmx",
+        "C:/Users/samoo/Desktop/code/python/Projet - Fight/test.tmx",
+        "chat.tsx",
+        "C:/Users/samoo/Desktop/code/python/Projet - Fight/a.tsx"
     ],
     "project": "sans titre.tiled-project",
     "recentFiles": [
+        "C:/Users/samoo/Desktop/code/python/Projet - Fight/a.tsx",
+        "chat.tsx",
+        "C:/Users/samoo/Desktop/code/python/Projet - Fight/test.tmx",
+        "arena1.tmx",
+        "C:/Users/samoo/Desktop/code/python/Projet - Fight/giphy-instagram.tsx",
+        "Mossy - BackgroundDecoration.tsx",
         "Mossy - TileSet.tsx",
         "Mossy - MossyHills.tsx",
-        "Mossy - BackgroundDecoration.tsx",
         "platforme.tsx",
         "Mossy - Decorations&Hazards.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 512,
-        "width": 512
+        "height": 128,
+        "width": 128
     },
     "tileset.transparentColor": "#000000",
     "tileset.useTransparentColor": false

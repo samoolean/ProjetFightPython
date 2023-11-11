@@ -1,0 +1,64 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "arena0.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "Mossy - TileSet.tsx": {
+            "scaleInDock": 0.125,
+            "scaleInEditor": 0.125
+        },
+        "Mossy2 - TileSet.tsx": {
+            "scaleInDock": 0.125,
+            "scaleInEditor": 0.33
+        },
+        "arena0.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 734,
+                "y": 482
+            }
+        },
+        "arena1.tmx": {
+            "scale": 0.03125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 9984,
+                "y": 960
+            }
+        },
+        "back.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/samoo/Desktop/code/python/Projet - Fight/asset/Mossy Tileset",
+    "map.height": 25,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 40,
+    "openFiles": [
+        "arena0.tmx",
+        "Mossy - TileSet.tsx",
+        "Mossy2 - TileSet.tsx",
+        "arena1.tmx",
+        "back.tsx"
+    ],
+    "project": "arene0.tiled-project",
+    "recentFiles": [
+        "back.tsx",
+        "arena1.tmx",
+        "Mossy2 - TileSet.tsx",
+        "Mossy - TileSet.tsx",
+        "arena0.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    }
+}
