@@ -2,6 +2,7 @@
 # 5
 # []
 # !
+# < >
 
 import pygame
 import pytmx
@@ -20,8 +21,7 @@ class Game:
         pygame.display.set_icon(ico)
 
         self.scrrec = self.window.get_rect()
-        self.largeurW, self.hauteurW = self.scrrec[2]/4, self.scrrec[3]/4
-        print(self.largeurW, self.hauteurW)
+        self.largeurW, self.hauteurW = self.scrrec[2]/4, self.scrrec[3]/8
 
         # Lecteur de musique 
 
@@ -46,10 +46,8 @@ class Game:
 
         self.surface_Y = self.hauteurW
 
-        self.player1 = Player((252, 255, 55 ) ,self.hauteurW ,self.largeurW ,self.surface_Y ,self.window)
-        self.player2 = Player((55, 255, 76 ) ,self.hauteurW ,self.largeurW ,self.surface_Y ,self.window)
-
-
+        self.player1 = Player((252, 255, 55 ) ,self.hauteurW ,self.largeurW ,self.window)
+        self.player2 = Player((55, 255, 76 ) ,self.hauteurW ,self.largeurW ,self.window)
 
     def run(self):
 
@@ -62,28 +60,39 @@ class Game:
         while running:
 
             # self.group.draw(self.window)
+
+            """
             
             if pygame.key.get_pressed()[pygame.K_z]:
-                self.player1.move_up(1)
+                self.player1.move_up(self.player1.x_velocity)
+
+            """
 
             if pygame.key.get_pressed()[pygame.K_s]:
-
-
-                self.player1.move_down(1)
+                if self.player1.jumping:
+                    self.player1.fastfall()
+                else:
+                    self.player1.move_down(self.player1.x_velocity)
                 
             if pygame.key.get_pressed()[pygame.K_q]:
-                self.player1.move_left(1)
+                self.player1.move_left(self.player1.x_velocity)
 
             if pygame.key.get_pressed()[pygame.K_d]:
-                self.player1.move_right(1)
+                self.player1.move_right(self.player1.x_velocity)
 
             if pygame.key.get_pressed()[pygame.K_SPACE]:
-                self.player1.jumping = True
+                if self.player1.count_jump > 0:
+                    self.player1.jumping = True
+                    self.player1.count_jump -= 1
     
             # jump
 
             if self.player1.jumping:
-                self.player1.jump(self.surface_Y)
+                self.player1.jump()
+
+                if self.player1.posy > self.surface_Y:
+                    self.player1.count_jump = 3
+
 
                 """
                 self.Player1 = JUMPING_SURFACE.get_rect(center=(X_POSITION, Y_POSITION))
@@ -95,6 +104,7 @@ class Game:
                 """
 
             self.player1.cube_player()
+            self.player2.cube_player()
         
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

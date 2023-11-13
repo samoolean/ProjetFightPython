@@ -2,7 +2,7 @@
 # 5
 # []
 # !
-# <
+# < >
 
 import pygame
 
@@ -37,17 +37,20 @@ class Player(pygame.sprite.Sprite):
 
     """
 
-    def __init__(self, color, x, y ,floor,screen):
+    def __init__(self, color, x, y ,screen):
 
         self.color = color
         self.posx = x
         self.posy = y
         self.screen = screen
         self.jumping = False
-        self.jump_height = 20
+        self.jump_height = 14
         self.y_velocity = self.jump_height
-        self.Y_GRAVITY = 0.6
-        self.floor = floor
+        self.Y_GRAVITY = 0.5
+        self.x_velocity = 7
+        self.floor = self.posy
+        self.count_jump = 3
+        self.box = Player.cube_player(self)
 
     def cube_player(self):
     
@@ -55,14 +58,20 @@ class Player(pygame.sprite.Sprite):
 
         return player1
     
+    def get_box(self):
+
+        self.box.move(self.posx,self.floor)
+
+    # movement player
+    
     def move_up(self, y):
 
         self.posy -= y
 
     def move_down(self, y):
 
-        if self.posy + y < self.floor :
-            print( 'I cant get down' + self.floor)
+        if self.posy + y > self.floor :
+            print( 'I cant get down ', self.posy)
         else:
             self.posy += y
 
@@ -74,11 +83,28 @@ class Player(pygame.sprite.Sprite):
 
         self.posx += x
 
-    def jump(self,floor):
+    def jump(self):
         
-
         self.posy -= self. y_velocity
         self.y_velocity -= self.Y_GRAVITY
-        if self.y_velocity < - self.jump_height:
+        if self.y_velocity < -self.jump_height:
             self.jumping = False
             self.y_velocity = self.jump_height
+
+    def fastfall(self):
+        
+        """
+
+        if self.posy > self.floor :
+            self.Y_GRAVITY = 2
+            if self.posy < self.floor :
+                self.Y_GRAVITY = 0.5
+
+        """
+        if self.posy < self.floor :
+            self.y_velocity -= 1
+            if self.posy > self.floor :
+                self.y_velocity = self.jump_height
+            print('5')
+        else: print(self.posy ,self.floor )
+        
