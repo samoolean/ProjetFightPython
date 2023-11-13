@@ -1,6 +1,8 @@
 # ()
 # 5
-#[ ]
+# []
+# !
+# <
 
 import pygame
 
@@ -35,12 +37,17 @@ class Player(pygame.sprite.Sprite):
 
     """
 
-    def __init__(self, color, x, y ,screen):
+    def __init__(self, color, x, y ,floor,screen):
 
         self.color = color
         self.posx = x
         self.posy = y
         self.screen = screen
+        self.jumping = False
+        self.jump_height = 20
+        self.y_velocity = self.jump_height
+        self.Y_GRAVITY = 0.6
+        self.floor = floor
 
     def cube_player(self):
     
@@ -54,7 +61,10 @@ class Player(pygame.sprite.Sprite):
 
     def move_down(self, y):
 
-        self.posy += y
+        if self.posy + y < self.floor :
+            print( 'I cant get down' + self.floor)
+        else:
+            self.posy += y
 
     def move_left(self, x):
 
@@ -64,3 +74,11 @@ class Player(pygame.sprite.Sprite):
 
         self.posx += x
 
+    def jump(self,floor):
+        
+
+        self.posy -= self. y_velocity
+        self.y_velocity -= self.Y_GRAVITY
+        if self.y_velocity < - self.jump_height:
+            self.jumping = False
+            self.y_velocity = self.jump_height
