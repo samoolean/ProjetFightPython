@@ -49,6 +49,23 @@ class Game:
         self.player1 = Player((252, 255, 55 ) ,self.hauteurW ,self.largeurW ,self.window)
         self.player2 = Player((55, 255, 76 ) ,self.hauteurW ,self.largeurW ,self.window)
 
+        self.player2.players = self.player1 ,self.player2
+        self.player1.players = self.player1 ,self.player2
+
+        self.IsFighting =False
+
+    def check_life(self):
+
+        if self.player1.life <= 0 :
+            self.player1.kill_player()
+        else:
+            self.player1.cube_player()
+
+        if self.player2.life <= 0 :
+            self.player2.kill_player()
+        else:
+            self.player2.cube_player()
+
     def run(self):
 
         clock = pygame.time.Clock()
@@ -67,10 +84,18 @@ class Game:
                 self.player1.move_up(self.player1.x_velocity)
 
             """
+            if pygame.mouse.get_pressed()[0]:
+                self.IsFighting = True
+                print('imf')
+            else:
+                self.IsFighting = False
 
             if pygame.key.get_pressed()[pygame.K_s]:
                 if self.player1.jumping:
-                    self.player1.fastfall()
+                    if self.IsFighting:
+                        self.player1.attaque(1)
+                    else:
+                        self.player1.fastfall()
                 else:
                     self.player1.move_down(self.player1.x_velocity)
                 
@@ -102,9 +127,7 @@ class Game:
                 SCREEN.blit(STANDING_SURFACE, mario_rect)
 
                 """
-
-            self.player1.cube_player()
-            self.player2.cube_player()
+            self.check_life()
         
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

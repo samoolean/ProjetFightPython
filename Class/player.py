@@ -5,7 +5,6 @@
 # < >
 
 import pygame
-
 pygame.init()
 
 class Player(pygame.sprite.Sprite):
@@ -51,6 +50,8 @@ class Player(pygame.sprite.Sprite):
         self.floor = self.posy
         self.count_jump = 3
         self.box = Player.cube_player(self)
+        self.life = 600
+        self.players = []
 
     def cube_player(self):
     
@@ -71,7 +72,7 @@ class Player(pygame.sprite.Sprite):
     def move_down(self, y):
 
         if self.posy + y > self.floor :
-            print( 'I cant get down ', self.posy)
+            pass
         else:
             self.posy += y
 
@@ -105,6 +106,33 @@ class Player(pygame.sprite.Sprite):
             self.y_velocity -= 1
             if self.posy > self.floor :
                 self.y_velocity = self.jump_height
-            print('5')
-        else: print(self.posy ,self.floor )
+        else: 
+            print(self.posy ,self.floor )
+
+    def take_damage(self, damage):
+
+        self.life = self.life - damage
+        if self.life <= 0 :
+            self.kill_player()
         
+    def kill_player(self):
+        print("i'm dead")
+        pass
+
+    def attaque(self, attaque_type):
+
+        # do attaque stuff
+     
+        match attaque_type:
+            case 1:
+                print('spike_basic')
+                hitbox =  pygame.draw.rect(self.screen, (255, 0, 0) ,(self.posx , self.posy + 70 + 20, 50, 20))
+                if hitbox.colliderect(self.players[1].box):
+                    self.players[1].take_damage(600)
+                else:
+                    pass
+
+            case 2:
+                print('other thing')
+            case _:
+                return print('Weird move')
