@@ -25,8 +25,8 @@ class Game:
 
         # Lecteur de musique 
 
-        musique = pygame.mixer.Sound('sound\\musique\\Princess_Mushroom.ogg')
-        musique.play()
+       # musique = pygame.mixer.Sound('sound\\musique\\Princess_Mushroom.ogg')
+        # musique.play()
 
         # chargement de la map
 
@@ -46,13 +46,16 @@ class Game:
 
         self.surface_Y = self.hauteurW
 
-        self.player1 = Player((252, 255, 55 ) ,self.hauteurW ,self.largeurW ,self.window)
-        self.player2 = Player((55, 255, 76 ) ,self.hauteurW ,self.largeurW ,self.window)
+        self.player1 = Player((252, 255, 55 ) ,self.hauteurW ,self.largeurW ,self.window, 'test1')
+        self.player2 = Player((55, 255, 76 ) ,self.hauteurW ,self.largeurW ,self.window, 'test2')
 
         self.player2.players = self.player1 ,self.player2
         self.player1.players = self.player1 ,self.player2
 
         self.IsFighting =False
+        self.action = []
+        self.checktick = True
+        self.allowToDodge = True
 
     def check_life(self):
 
@@ -65,6 +68,19 @@ class Game:
             self.player2.kill_player()
         else:
             self.player2.cube_player()
+    
+    def count_tick(self,action):
+
+        if self.checktick:
+            self.action.append(action)
+            if len(self.action) >= 60:
+                self.checktick = False
+                hit = pygame.mixer.Sound('sound\\bruitage\\hit.ogg')
+                hit.play()
+                print('max hit')
+                del self.action[:]
+                if len(self.action) == 0:
+                    self.checktick = True
 
     def run(self):
 
@@ -86,18 +102,27 @@ class Game:
             """
             if pygame.mouse.get_pressed()[0]:
                 self.IsFighting = True
-                print('imf')
             else:
                 self.IsFighting = False
+
+            if pygame.mouse.get_pressed()[1]:
+                self.allowToDodge = False
+            else:
+                self.allowToDodge = True
 
             if pygame.key.get_pressed()[pygame.K_s]:
                 if self.player1.jumping:
                     if self.IsFighting:
                         self.player1.attaque(1)
+                        self.count_tick('spike')
                     else:
                         self.player1.fastfall()
                 else:
-                    self.player1.move_down(self.player1.x_velocity)
+                    if self.IsFighting:
+                        self.player1.attaque(2)
+                        self.count_tick('down_light_attaque')
+                    else:
+                        self.player1.move_down(self.player1.x_velocity)
                 
             if pygame.key.get_pressed()[pygame.K_q]:
                 self.player1.move_left(self.player1.x_velocity)
@@ -117,7 +142,6 @@ class Game:
 
                 if self.player1.posy > self.surface_Y:
                     self.player1.count_jump = 3
-
 
                 """
                 self.Player1 = JUMPING_SURFACE.get_rect(center=(X_POSITION, Y_POSITION))
@@ -139,3 +163,8 @@ class Game:
             self.window.fill((0, 0, 0))
 
         pygame.quit()
+
+        """
+        
+        
+        """

@@ -36,13 +36,14 @@ class Player(pygame.sprite.Sprite):
 
     """
 
-    def __init__(self, color, x, y ,screen):
+    def __init__(self, color, x, y ,screen, name):
 
         self.color = color
         self.posx = x
         self.posy = y
         self.screen = screen
         self.jumping = False
+        self.allowToDodge = True
         self.jump_height = 14
         self.y_velocity = self.jump_height
         self.Y_GRAVITY = 0.5
@@ -52,6 +53,12 @@ class Player(pygame.sprite.Sprite):
         self.box = Player.cube_player(self)
         self.life = 600
         self.players = []
+        self.namep = name
+        self.myself = Player.create_myself()
+
+    def create_myself(self):
+
+        myself = Player(self.color ,70 ,40,self.screen, self.namep)
 
     def cube_player(self):
     
@@ -59,6 +66,10 @@ class Player(pygame.sprite.Sprite):
 
         return player1
     
+    def find_players(self):
+
+        self.players = []
+        
     def get_box(self):
 
         self.box.move(self.posx,self.floor)
@@ -85,7 +96,9 @@ class Player(pygame.sprite.Sprite):
         self.posx += x
 
     def jump(self):
-        
+
+        print('im jumping')
+
         self.posy -= self. y_velocity
         self.y_velocity -= self.Y_GRAVITY
         if self.y_velocity < -self.jump_height:
@@ -109,6 +122,8 @@ class Player(pygame.sprite.Sprite):
         else: 
             print(self.posy ,self.floor )
 
+    # life of player
+
     def take_damage(self, damage):
 
         self.life = self.life - damage
@@ -122,6 +137,19 @@ class Player(pygame.sprite.Sprite):
     def attaque(self, attaque_type):
 
         # do attaque stuff
+
+        """
+        for a rectangle it's util tip's :
+        
+        rect2.center = (20,30) # for set the center of rect
+
+        Rect(left, top, width, height) -> Rect
+        Rect((left, top), (width, height)) -> Rect
+        Rect(object) -> Rect
+        
+        dimension des persos : heigt 70, widht 50.
+
+        """
      
         match attaque_type:
             case 1:
@@ -133,6 +161,26 @@ class Player(pygame.sprite.Sprite):
                     pass
 
             case 2:
-                print('other thing')
+                print('down_light_attaque')
+                hitbox1 =  pygame.draw.rect(self.screen, (255, 0, 0) ,(self.posx - 30, self.posy + 40, 25, 30))
+                hitbox2 =  pygame.draw.rect(self.screen, (255, 0, 0) ,(self.posx + 55, self.posy + 40, 25, 30))
+                if hitbox1.colliderect(self.players[1].box):
+                    self.players[1].take_damage(600)
+                else:
+                    if hitbox2.colliderect(self.players[1].box):
+                            self.players[1].take_damage(600)
+                    else:
+                        pass
+
             case _:
                 return print('Weird move')
+        
+    def dodge(self):
+
+        self.players.pop(0)
+
+    def undo_dodge(self):
+
+        self.players.append(self.myself)
+
+
