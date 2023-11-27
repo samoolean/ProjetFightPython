@@ -1,9 +1,13 @@
-17/11/2023
+Testing stuff for new Combat System in python
 
-- implementation de l'esquive et de plusieurs attaques.
+- patch combot too long (like mortal Kombat)
 
-- test d'une nouvelle manière pour le dash et le Gravity Cancel en enregistrant les input toutes les frames dans des tuples.
+- easy to set hitbox
 
-- test d'une nouvelle map
+- better dodge
 
-- possibilitée de sautée plusieurs fois
+- better dash
+
+- Gravity Cancel (like brawhlalla)
+
+- percent system with edge-garde (like smash bros)
